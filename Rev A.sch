@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -9112,6 +9112,131 @@ Source: www.kingbright.com</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="TI_MSP430_v16">
+<packages>
+<package name="N20">
+<wire x1="12.695" y1="2.921" x2="-12.705" y2="2.921" width="0.1524" layer="21"/>
+<wire x1="-12.705" y1="-2.921" x2="12.695" y2="-2.921" width="0.1524" layer="21"/>
+<wire x1="12.695" y1="2.921" x2="12.695" y2="-2.921" width="0.1524" layer="21"/>
+<wire x1="-12.705" y1="2.921" x2="-12.705" y2="1.016" width="0.1524" layer="21"/>
+<wire x1="-12.705" y1="-2.921" x2="-12.705" y2="-1.016" width="0.1524" layer="21"/>
+<wire x1="-12.705" y1="1.016" x2="-12.705" y2="-1.016" width="0.1524" layer="21" curve="-180"/>
+<circle x="-12.065" y="-1.905" radius="0.381" width="0.127" layer="21"/>
+<pad name="1" x="-11.435" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="2" x="-8.895" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="7" x="3.805" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="14" x="3.805" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="3" x="-6.355" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="4" x="-3.815" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="6" x="1.265" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="5" x="-1.275" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="15" x="1.265" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="16" x="-1.275" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="17" x="-3.815" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="18" x="-6.355" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="19" x="-8.895" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="20" x="-11.435" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="10" x="11.425" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="9" x="8.885" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="8" x="6.345" y="-3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="11" x="11.425" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="12" x="8.885" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<pad name="13" x="6.345" y="3.81" drill="0.8128" shape="long" rot="R90"/>
+<text x="-13.086" y="-2.921" size="1.27" layer="25" ratio="10" rot="R90">&gt;NAME</text>
+<text x="-10.038" y="-0.635" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="G2XX3---N/PW20">
+<wire x1="-19.05" y1="12.7" x2="17.78" y2="12.7" width="0.254" layer="94"/>
+<wire x1="17.78" y1="12.7" x2="17.78" y2="-17.78" width="0.254" layer="94"/>
+<wire x1="17.78" y1="-17.78" x2="-19.05" y2="-17.78" width="0.254" layer="94"/>
+<wire x1="-19.05" y1="-17.78" x2="-19.05" y2="12.7" width="0.254" layer="94"/>
+<circle x="-15.24" y="10.16" radius="1.27" width="0.254" layer="94"/>
+<text x="-17.78" y="12.7" size="1.778" layer="96">MSP430G2XX3</text>
+<text x="-17.78" y="-20.32" size="1.778" layer="95">&gt;Name</text>
+<text x="-17.78" y="7.62" size="0.7112" layer="95" font="vector">DVcc</text>
+<text x="-17.78" y="5.08" size="0.7112" layer="95" font="vector">P1.0/TA0CLK/ACLK/A0*/CA0</text>
+<text x="-17.78" y="2.54" size="0.7112" layer="95" font="vector">P1.1/TA0.0/UCA0RXD/UCA0SOMI/A1*/CA1</text>
+<text x="-17.78" y="0" size="0.7112" layer="95" font="vector">P1.2/TA0.1/UCA0TXD/PUCA0SIMO/A2*/CA2</text>
+<text x="-17.78" y="-2.54" size="0.7112" layer="95" font="vector">P1.3/VREF-*/VEREF-*/....</text>
+<text x="-17.78" y="-5.08" size="0.7112" layer="95" font="vector">P1.4/VREF+*/VEREF+*/TCK/....</text>
+<text x="-17.78" y="-7.62" size="0.7112" layer="95" font="vector">P1.5/TA0.0/UCB0CLK/TMS/....</text>
+<text x="3.81" y="-7.62" size="0.7112" layer="95" font="vector">P1.6/TA0.1/TDI/TCLK/....</text>
+<text x="3.81" y="-5.08" size="0.7112" layer="95" font="vector">P1.7/CAOUT/TDO/TDI/....</text>
+<text x="7.62" y="-2.54" size="0.7112" layer="95" font="vector">_RST/NMI/SBWTDIO</text>
+<text x="10.16" y="0" size="0.7112" layer="95" font="vector">TEST/SBWTCK</text>
+<text x="11.43" y="2.54" size="0.7112" layer="95" font="vector">XOUT/P2.7</text>
+<text x="8.89" y="5.08" size="0.7112" layer="95" font="vector">XIN/P2.6/TA0.1</text>
+<text x="13.97" y="7.62" size="0.7112" layer="95" font="vector">DVSS</text>
+<text x="-17.78" y="-10.16" size="0.7112" layer="95" font="vector">P2.0</text>
+<text x="-17.78" y="-12.7" size="0.7112" layer="95" font="vector">P2.1</text>
+<text x="-17.78" y="-15.24" size="0.7112" layer="95" font="vector">P2.2</text>
+<text x="12.7" y="-15.24" size="0.7112" layer="95" font="vector">P2.3</text>
+<text x="12.7" y="-12.7" size="0.7112" layer="95" font="vector">P2.4</text>
+<text x="12.7" y="-10.16" size="0.7112" layer="95" font="vector">P2.5</text>
+<pin name="1" x="-24.13" y="7.62" visible="pad" length="middle"/>
+<pin name="2" x="-24.13" y="5.08" visible="pad" length="middle"/>
+<pin name="3" x="-24.13" y="2.54" visible="pad" length="middle"/>
+<pin name="4" x="-24.13" y="0" visible="pad" length="middle"/>
+<pin name="5" x="-24.13" y="-2.54" visible="pad" length="middle"/>
+<pin name="6" x="-24.13" y="-5.08" visible="pad" length="middle"/>
+<pin name="7" x="-24.13" y="-7.62" visible="pad" length="middle"/>
+<pin name="14" x="22.86" y="-7.62" visible="pad" length="middle" rot="R180"/>
+<pin name="15" x="22.86" y="-5.08" visible="pad" length="middle" rot="R180"/>
+<pin name="16" x="22.86" y="-2.54" visible="pad" length="middle" rot="R180"/>
+<pin name="17" x="22.86" y="0" visible="pad" length="middle" rot="R180"/>
+<pin name="18" x="22.86" y="2.54" visible="pad" length="middle" rot="R180"/>
+<pin name="19" x="22.86" y="5.08" visible="pad" length="middle" rot="R180"/>
+<pin name="20" x="22.86" y="7.62" visible="pad" length="middle" rot="R180"/>
+<pin name="8" x="-24.13" y="-10.16" visible="pad" length="middle"/>
+<pin name="9" x="-24.13" y="-12.7" visible="pad" length="middle"/>
+<pin name="10" x="-24.13" y="-15.24" visible="pad" length="middle"/>
+<pin name="13" x="22.86" y="-10.16" visible="pad" length="middle" rot="R180"/>
+<pin name="12" x="22.86" y="-12.7" visible="pad" length="middle" rot="R180"/>
+<pin name="11" x="22.86" y="-15.24" visible="pad" length="middle" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="G2XX3---N20">
+<description>&lt;h1&gt;MSP430G2XX1&lt;/h1&gt;
+
+PDIP (N) 20 Pin Package &lt;br&gt;</description>
+<gates>
+<gate name="G$1" symbol="G2XX3---N/PW20" x="0" y="2.54"/>
+</gates>
+<devices>
+<device name="" package="N20">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="10" pad="10"/>
+<connect gate="G$1" pin="11" pad="11"/>
+<connect gate="G$1" pin="12" pad="12"/>
+<connect gate="G$1" pin="13" pad="13"/>
+<connect gate="G$1" pin="14" pad="14"/>
+<connect gate="G$1" pin="15" pad="15"/>
+<connect gate="G$1" pin="16" pad="16"/>
+<connect gate="G$1" pin="17" pad="17"/>
+<connect gate="G$1" pin="18" pad="18"/>
+<connect gate="G$1" pin="19" pad="19"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="20" pad="20"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="5" pad="5"/>
+<connect gate="G$1" pin="6" pad="6"/>
+<connect gate="G$1" pin="7" pad="7"/>
+<connect gate="G$1" pin="8" pad="8"/>
+<connect gate="G$1" pin="9" pad="9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -9151,6 +9276,10 @@ Source: www.kingbright.com</description>
 <part name="P+4" library="supply1" deviceset="VCC" device=""/>
 <part name="R4" library="rcl" deviceset="R-EU_" device="R0805" value="1kΩ"/>
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
+<part name="U$1" library="TI_MSP430_v16" deviceset="G2XX3---N20" device=""/>
+<part name="GND10" library="supply1" deviceset="GND" device=""/>
+<part name="GND11" library="supply1" deviceset="GND" device=""/>
+<part name="C4" library="rcl" deviceset="C-EU" device="C0805" value="0.1uF"/>
 </parts>
 <sheets>
 <sheet>
@@ -9190,6 +9319,10 @@ Source: www.kingbright.com</description>
 <instance part="P+4" gate="VCC" x="45.72" y="142.24"/>
 <instance part="R4" gate="G$1" x="45.72" y="104.14" rot="R90"/>
 <instance part="GND9" gate="1" x="45.72" y="88.9"/>
+<instance part="U$1" gate="G$1" x="157.48" y="157.48"/>
+<instance part="GND10" gate="1" x="189.23" y="121.92"/>
+<instance part="GND11" gate="1" x="111.76" y="166.37"/>
+<instance part="C4" gate="G$1" x="119.38" y="173.99" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -9247,6 +9380,18 @@ Source: www.kingbright.com</description>
 <pinref part="R4" gate="G$1" pin="1"/>
 <wire x1="45.72" y1="99.06" x2="45.72" y2="91.44" width="0.1524" layer="91"/>
 <pinref part="GND9" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="20"/>
+<wire x1="180.34" y1="165.1" x2="189.23" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="189.23" y1="165.1" x2="189.23" y2="124.46" width="0.1524" layer="91"/>
+<pinref part="GND10" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C4" gate="G$1" pin="1"/>
+<pinref part="GND11" gate="1" pin="GND"/>
+<wire x1="116.84" y1="173.99" x2="111.76" y2="173.99" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="173.99" x2="111.76" y2="168.91" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -9363,6 +9508,16 @@ Source: www.kingbright.com</description>
 <wire x1="-2.54" y1="101.6" x2="20.32" y2="101.6" width="0.1524" layer="91"/>
 <label x="25.4" y="104.14" size="1.778" layer="95" rot="R180"/>
 </segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="1"/>
+<wire x1="133.35" y1="165.1" x2="129.54" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="129.54" y1="165.1" x2="129.54" y2="173.99" width="0.1524" layer="91"/>
+<label x="121.92" y="182.88" size="1.778" layer="95"/>
+<junction x="129.54" y="173.99"/>
+<wire x1="129.54" y1="173.99" x2="129.54" y2="182.88" width="0.1524" layer="91"/>
+<pinref part="C4" gate="G$1" pin="2"/>
+<wire x1="124.46" y1="173.99" x2="129.54" y2="173.99" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="N$7" class="0">
 <segment>
@@ -9374,6 +9529,13 @@ Source: www.kingbright.com</description>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="101,1,210.82,38.1,KK1,K,,,,"/>
+<approved hash="101,1,210.82,27.94,KK1,K,,,,"/>
+<approved hash="104,1,134.62,35.56,OP-AMP,VDD,VCC,,,"/>
+<approved hash="202,1,5.08,88.9,VREF,ADJ,,,,"/>
+<approved hash="115,1,46.0417,120.65,ON,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
