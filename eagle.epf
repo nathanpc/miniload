@@ -384,7 +384,7 @@ UsedLibrary="/home/nathanpc/eagle/Power Supply/Custom Stuff.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="1081 267 1813 637"
+Loc="445 507 1177 877"
 State=2
 Number=0
 
