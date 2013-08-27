@@ -11,6 +11,6 @@
 void adc_setup();
 
 void fetch_adc_readings();
-unsigned int get_adc_sample(unsigned int index);
+float get_adc_sample();
 
 #endif

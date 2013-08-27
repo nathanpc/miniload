@@ -13,44 +13,36 @@
 #include "delay.h"
 #include "bitio.h"
 
-// Settings.
-#define ADC_CHANNELS 2
-
 // Pins.
-#define TMP   BIT6
-#define PHOTO BIT7
+#define CURR_SENSE BIT6
 
-unsigned int samples[ADC_CHANNELS];
+// Parameters.
+#define AVG_READS 20
+#define VREF 2.9f
+
+unsigned int sample = 0;
 
 /**
  *  Setup the pins and the ADC.
  */
 void adc_setup() {
 	// Turn P1.6 into a ADC.
-	P1DIR &= ~(TMP + PHOTO);
-	P1SEL |= (TMP + PHOTO);
+	P1DIR &= ~(CURR_SENSE);
+	P1SEL |= (CURR_SENSE);
 
-	// Setup the ADC.
-	ADC10CTL1 = INCH_7 + ADC10DIV_3 + CONSEQ_3 + SHS_0;
-	ADC10CTL0 = SREF_0 + ADC10SHT_3 + MSC + ADC10ON + ADC10IE; 
-	ADC10AE0 = TMP + PHOTO; 
-	ADC10DTC1 = ADC_CHANNELS;
-	/*
 	ADC10CTL1 = INCH_6 + ADC10DIV_3;  // Channel 6, ADC10CLK/4
 	ADC10CTL0 = SREF_0 + ADC10SHT_3 + ADC10ON + ADC10IE;  // Vcc & Vss as reference.
-	ADC10AE0 |= TMP;  // P1.6 ADC option.
-	*/
+	ADC10AE0 |= CURR_SENSE;  // P1.6 ADC option.
 }
 
 /**
  *  Fetch the ADC samples.
  */
 void fetch_adc_readings() {
-	__delay_cycles(1000);
-	ADC10CTL0 &= ~ENC;
-	while (ADC10CTL1 & BUSY);
-	ADC10SA = (unsigned int)samples;
-	ADC10CTL0 |= ENC + ADC10SC;
+	__delay_cycles(1000);             // Wait for ADC Ref to settle
+	ADC10CTL0 |= ENC + ADC10SC;       // Sampling and conversion start
+    __bis_SR_register(CPUOFF + GIE);  // LPM0 with interrupts enabled    
+    sample = ADC10MEM;
 }
 
 /**
@@ -58,8 +50,23 @@ void fetch_adc_readings() {
  *
  *  @param index A array index.
  */
-unsigned int get_adc_sample(unsigned int index) {
-	return samples[index];
+float get_adc_sample() {
+	float readings[AVG_READS];
+	float avg_read = 0.0;
+
+	// Get the values.
+	for (unsigned int i = 0; i < AVG_READS; i++) {
+		fetch_adc_readings();
+		readings[i] = ((sample * VREF) / 1024) * 100;
+	}
+
+	// Sum everything.
+	for (unsigned int read = 0; read < AVG_READS; read++) {
+		avg_read += readings[read];
+	}
+
+	// Average the readings.
+	return avg_read / AVG_READS;
 }
 
 /**

@@ -10,7 +10,7 @@
 
 #include "boolean.h"
 
-#define VREF 2.5f
+#define VREF 2.9f
 
 void control_init();
 void set_current(bool increment);

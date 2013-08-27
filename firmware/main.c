@@ -21,11 +21,7 @@
 #include "ftoa.h"
 #include "strings.h"
 
-// Properties.
-#define APROX_VIN 3.6
-#define AVG_READS 20
-
-float get_temperature();
+void print_current();
 void print_digit(unsigned int pos, unsigned int digit);
 
 
@@ -59,40 +55,25 @@ void main() {
 	// TODO: Test that LMP + GIE thing?
 
 	while (TRUE) {
-		lcd_set_pos(0, 0);
-		lcd_print("Hello, world!");
-
 		//print_digit(0, 8);
 		print_digit(1, 5);
 		print_digit(2, 0);
 		print_digit(3, 0);
+
+		print_current();
 
 		delay_ms(1000);
 	}
 }
 
 /**
- *  Gets a average temperature.
- *
- *  @return A temperature.
+ *  Prints the load current.
  */
-float get_temperature() {
-	float readings[AVG_READS];
-	float avg_read = 0.0;
-
-	// Get the values.
-	for (unsigned int i = 0; i < AVG_READS; i++) {
-		fetch_adc_readings();
-		readings[i] = ((get_adc_sample(1) * APROX_VIN) / 1024) * 100;
-	}
-
-	// Sum everything.
-	for (unsigned int read = 0; read < AVG_READS; read++) {
-		avg_read += readings[read];
-	}
-
-	// Average the readings.
-	return avg_read / AVG_READS;
+void print_current() {
+	char vstr[10];
+	ftoa(vstr, get_adc_sample(), 1);
+	lcd_set_pos(0, 0);
+	lcd_print(vstr);
 }
 
 /**
