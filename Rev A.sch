@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -12310,6 +12310,9 @@ type RDH, grid 15 mm</description>
 <text x="40.64" y="111.76" size="1.778" layer="91" rot="R90">Green 1206</text>
 <text x="2.54" y="76.2" size="3.81" layer="91">Add a little adjustable pot</text>
 <text x="149.86" y="66.04" size="3.81" layer="91">Use block terminals for TVIN</text>
+<text x="20.32" y="48.26" size="3.81" layer="91">Check if the opamp VCC
+being higher than the MCU
+VCC will amplify the thing.</text>
 </plain>
 <instances>
 <instance part="OP-AMP" gate="A" x="152.4" y="30.48"/>
@@ -12616,4 +12619,10 @@ type RDH, grid 15 mm</description>
 </errors>
 </schematic>
 </drawing>
+<compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
+</compatibility>
 </eagle>
