@@ -1486,30 +1486,6 @@ Source: http://www.onsemi.co.jp .. LM137M-D.PDF</description>
 </package>
 </packages>
 </library>
-<library name="linear">
-<description>&lt;b&gt;Linear Devices&lt;/b&gt;&lt;p&gt;
-Operational amplifiers,  comparators, voltage regulators, ADCs, DACs, etc.&lt;p&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="TO92">
-<description>&lt;b&gt;TO-92&lt;/b&gt;</description>
-<wire x1="-2.095" y1="-1.651" x2="-0.7869" y2="2.5484" width="0.1524" layer="21" curve="-111.097684"/>
-<wire x1="0.7869" y1="2.5484" x2="2.095" y2="-1.651" width="0.1524" layer="21" curve="-111.097684"/>
-<wire x1="-2.095" y1="-1.651" x2="2.095" y2="-1.651" width="0.1524" layer="21"/>
-<wire x1="-2.254" y1="-0.254" x2="-0.286" y2="-0.254" width="0.1524" layer="51"/>
-<wire x1="-2.655" y1="-0.254" x2="-2.254" y2="-0.254" width="0.1524" layer="21"/>
-<wire x1="-0.286" y1="-0.254" x2="0.286" y2="-0.254" width="0.1524" layer="21"/>
-<wire x1="2.254" y1="-0.254" x2="2.655" y2="-0.254" width="0.1524" layer="21"/>
-<wire x1="0.286" y1="-0.254" x2="2.254" y2="-0.254" width="0.1524" layer="51"/>
-<wire x1="-0.7864" y1="2.5484" x2="0.7864" y2="2.5484" width="0.1524" layer="51" curve="-34.298964"/>
-<pad name="1" x="-1.27" y="0" drill="0.8128" shape="octagon"/>
-<pad name="2" x="0" y="1.905" drill="0.8128" shape="octagon"/>
-<pad name="3" x="1.27" y="0" drill="0.8128" shape="octagon"/>
-<text x="2.413" y="1.651" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="2.921" y="-1.27" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-</package>
-</packages>
-</library>
 <library name="led">
 <description>&lt;b&gt;LEDs&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;&lt;br&gt;
@@ -3016,14 +2992,6 @@ design rules under a new name.</description>
 <attribute name="NAME" x="26.67" y="66.04" size="1.27" layer="25" rot="R270"/>
 <attribute name="VALUE" x="22.86" y="62.23" size="1.27" layer="27"/>
 </element>
-<element name="VREF" library="linear" package="TO92" value="LM336LP" x="21.59" y="19.05" smashed="yes">
-<attribute name="NAME" x="24.13" y="16.51" size="1.27" layer="25" ratio="10" rot="R180"/>
-<attribute name="VALUE" x="24.511" y="17.78" size="1.27" layer="27" ratio="10"/>
-</element>
-<element name="R1" library="rcl" package="R0805" value="2.2kΩ" x="21.59" y="24.13" smashed="yes">
-<attribute name="NAME" x="22.86" y="26.67" size="1.27" layer="25" rot="R180"/>
-<attribute name="VALUE" x="20.955" y="21.59" size="1.27" layer="27"/>
-</element>
 <element name="ON" library="led" package="CHIPLED_1206" value="" x="11.43" y="64.77" smashed="yes" rot="R270">
 <attribute name="VALUE" x="10.16" y="62.23" size="1.27" layer="27"/>
 </element>
@@ -3046,7 +3014,6 @@ design rules under a new name.</description>
 <contactref element="PWR" pad="1"/>
 <contactref element="VREG" pad="1"/>
 <contactref element="C3" pad="1"/>
-<contactref element="VREF" pad="3"/>
 <contactref element="R4" pad="1"/>
 <contactref element="MCU" pad="20"/>
 <contactref element="C4" pad="1"/>
@@ -3064,13 +3031,11 @@ design rules under a new name.</description>
 <wire x1="18.73" y1="64.77" x2="23.18" y2="64.77" width="0" layer="19" extent="1-1"/>
 <wire x1="13.97" y1="71.39" x2="18.73" y2="64.77" width="0" layer="19" extent="1-1"/>
 <wire x1="20.98" y1="74.69" x2="13.97" y2="71.39" width="0" layer="19" extent="1-1"/>
-<wire x1="22.86" y1="19.05" x2="48.26" y2="41.91" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="VCC">
 <contactref element="OPAMP" pad="8"/>
 <contactref element="C1" pad="2"/>
 <contactref element="VREG" pad="4"/>
-<contactref element="R1" pad="2"/>
 <contactref element="ON" pad="A"/>
 <wire x1="40.64" y1="49.53" x2="40.64" y2="50.8" width="0.4064" layer="1"/>
 <wire x1="40.64" y1="50.8" x2="39.37" y2="52.07" width="0.4064" layer="1"/>
@@ -3088,10 +3053,18 @@ design rules under a new name.</description>
 <wire x1="27.94" y1="71.73" x2="27.28" y2="72.39" width="0.4064" layer="1"/>
 <contactref element="U1" pad="2"/>
 <contactref element="U1" pad="15"/>
+<contactref element="MCU" pad="1"/>
+<contactref element="C4" pad="2"/>
+<wire x1="100.33" y1="22.54" x2="103.19" y2="22.54" width="0.4064" layer="1"/>
+<wire x1="103.19" y1="22.54" x2="104.14" y2="21.59" width="0.4064" layer="1"/>
+<wire x1="104.14" y1="21.59" x2="104.14" y2="21.585" width="0.4064" layer="1"/>
+<wire x1="104.14" y1="21.585" x2="105.405" y2="20.32" width="0.4064" layer="1"/>
+<contactref element="R7" pad="1"/>
 <wire x1="123.19" y1="78.5" x2="140.97" y2="75.96" width="0" layer="19" extent="1-1"/>
-<wire x1="40.64" y1="50.8" x2="123.19" y2="78.5" width="0" layer="19" extent="1-1"/>
+<wire x1="100.33" y1="25.82" x2="123.19" y2="78.5" width="0" layer="19" extent="1-1"/>
+<wire x1="40.64" y1="49.53" x2="100.33" y2="25.82" width="0" layer="19" extent="1-1"/>
 <wire x1="26.67" y1="67.31" x2="38.1" y2="55.88" width="0" layer="19" extent="1-1"/>
-<wire x1="22.54" y1="24.13" x2="40.64" y2="49.53" width="0" layer="19" extent="1-1"/>
+<wire x1="100.33" y1="25.82" x2="100.33" y2="22.54" width="0.4064" layer="1"/>
 </signal>
 <signal name="N$2">
 <contactref element="OPAMP" pad="6"/>
@@ -3159,23 +3132,6 @@ design rules under a new name.</description>
 <wire x1="17.78" y1="71.12" x2="19.05" y2="69.85" width="0.6096" layer="1"/>
 <wire x1="19.05" y1="69.85" x2="20.74" y2="69.85" width="0.6096" layer="1"/>
 <wire x1="20.74" y1="69.85" x2="20.98" y2="70.09" width="0.6096" layer="1"/>
-</signal>
-<signal name="REF_SUPPLY">
-<contactref element="VREF" pad="2"/>
-<contactref element="R1" pad="1"/>
-<contactref element="MCU" pad="1"/>
-<contactref element="C4" pad="2"/>
-<contactref element="R7" pad="1"/>
-<wire x1="21.59" y1="20.955" x2="21.59" y2="21.59" width="0.4064" layer="1"/>
-<wire x1="21.59" y1="21.59" x2="20.32" y2="22.86" width="0.4064" layer="1"/>
-<wire x1="20.32" y1="22.86" x2="20.32" y2="23.81" width="0.4064" layer="1"/>
-<wire x1="20.32" y1="23.81" x2="20.64" y2="24.13" width="0.4064" layer="1"/>
-<wire x1="100.33" y1="25.82" x2="100.33" y2="22.54" width="0" layer="19" extent="1-1"/>
-<wire x1="21.59" y1="20.955" x2="100.33" y2="22.54" width="0" layer="19" extent="1-1"/>
-<wire x1="100.33" y1="22.54" x2="103.19" y2="22.54" width="0.6096" layer="1"/>
-<wire x1="103.19" y1="22.54" x2="104.14" y2="21.59" width="0.6096" layer="1"/>
-<wire x1="104.14" y1="21.59" x2="104.14" y2="21.585" width="0.6096" layer="1"/>
-<wire x1="104.14" y1="21.585" x2="105.405" y2="20.32" width="0.6096" layer="1"/>
 </signal>
 <signal name="N$7">
 <contactref element="R4" pad="2"/>
