@@ -13556,95 +13556,6 @@ Updated 01/08/2005&lt;/i&gt;&lt;/h4&gt;</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="linear">
-<description>&lt;b&gt;Linear Devices&lt;/b&gt;&lt;p&gt;
-Operational amplifiers,  comparators, voltage regulators, ADCs, DACs, etc.&lt;p&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="SO08">
-<description>&lt;b&gt;Small Outline Package 8&lt;/b&gt;&lt;br&gt;
-NS Package M08A</description>
-<wire x1="2.4" y1="1.9" x2="2.4" y2="-1.4" width="0.2032" layer="51"/>
-<wire x1="2.4" y1="-1.4" x2="2.4" y2="-1.9" width="0.2032" layer="51"/>
-<wire x1="2.4" y1="-1.9" x2="-2.4" y2="-1.9" width="0.2032" layer="51"/>
-<wire x1="-2.4" y1="-1.9" x2="-2.4" y2="-1.4" width="0.2032" layer="51"/>
-<wire x1="-2.4" y1="-1.4" x2="-2.4" y2="1.9" width="0.2032" layer="51"/>
-<wire x1="-2.4" y1="1.9" x2="2.4" y2="1.9" width="0.2032" layer="51"/>
-<wire x1="2.4" y1="-1.4" x2="-2.4" y2="-1.4" width="0.2032" layer="51"/>
-<smd name="2" x="-0.635" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="7" x="-0.635" y="2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="1" x="-1.905" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="3" x="0.635" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="4" x="1.905" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="8" x="-1.905" y="2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="6" x="0.635" y="2.6" dx="0.6" dy="2.2" layer="1"/>
-<smd name="5" x="1.905" y="2.6" dx="0.6" dy="2.2" layer="1"/>
-<text x="-2.667" y="-1.905" size="1.27" layer="25" rot="R90">&gt;NAME</text>
-<text x="3.937" y="-1.905" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
-<rectangle x1="-2.15" y1="-3.1" x2="-1.66" y2="-2" layer="51"/>
-<rectangle x1="-0.88" y1="-3.1" x2="-0.39" y2="-2" layer="51"/>
-<rectangle x1="0.39" y1="-3.1" x2="0.88" y2="-2" layer="51"/>
-<rectangle x1="1.66" y1="-3.1" x2="2.15" y2="-2" layer="51"/>
-<rectangle x1="1.66" y1="2" x2="2.15" y2="3.1" layer="51"/>
-<rectangle x1="0.39" y1="2" x2="0.88" y2="3.1" layer="51"/>
-<rectangle x1="-0.88" y1="2" x2="-0.39" y2="3.1" layer="51"/>
-<rectangle x1="-2.15" y1="2" x2="-1.66" y2="3.1" layer="51"/>
-</package>
-</packages>
-<symbols>
-<symbol name="LM78LXX">
-<wire x1="-7.62" y1="2.54" x2="10.16" y2="2.54" width="0.254" layer="94"/>
-<wire x1="10.16" y1="2.54" x2="10.16" y2="-10.16" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-10.16" x2="-7.62" y2="-10.16" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="-10.16" x2="-7.62" y2="2.54" width="0.254" layer="94"/>
-<text x="-7.62" y="3.81" size="1.778" layer="95">&gt;NAME</text>
-<text x="-5.842" y="-4.826" size="1.778" layer="96">&gt;VALUE</text>
-<text x="-0.762" y="-8.89" size="1.524" layer="95">GND</text>
-<pin name="VIN" x="-10.16" y="0" length="short" direction="pas"/>
-<pin name="VOUT" x="12.7" y="0" length="short" direction="out" rot="R180"/>
-<pin name="GND@1" x="-2.54" y="-12.7" visible="pad" length="short" direction="pwr" rot="R90"/>
-<pin name="GND@2" x="0" y="-12.7" visible="pad" length="short" direction="pwr" rot="R90"/>
-<pin name="GND@3" x="2.54" y="-12.7" visible="pad" length="short" direction="pwr" rot="R90"/>
-<pin name="GND@4" x="5.08" y="-12.7" visible="pad" length="short" direction="pwr" rot="R90"/>
-</symbol>
-<symbol name="NC">
-<pin name="NC" x="-2.54" y="0" length="short" direction="nc"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="78L*SMD" prefix="IC">
-<description>&lt;b&gt;Positive VOLTAGE REGULATOR&lt;/b&gt;</description>
-<gates>
-<gate name="G$1" symbol="LM78LXX" x="0" y="0"/>
-<gate name="NC4" symbol="NC" x="30.48" y="2.54" addlevel="request"/>
-<gate name="NC5" symbol="NC" x="30.48" y="-2.54" addlevel="request"/>
-</gates>
-<devices>
-<device name="" package="SO08">
-<connects>
-<connect gate="G$1" pin="GND@1" pad="2"/>
-<connect gate="G$1" pin="GND@2" pad="3"/>
-<connect gate="G$1" pin="GND@3" pad="6"/>
-<connect gate="G$1" pin="GND@4" pad="7"/>
-<connect gate="G$1" pin="VIN" pad="8"/>
-<connect gate="G$1" pin="VOUT" pad="1"/>
-<connect gate="NC4" pin="NC" pad="4"/>
-<connect gate="NC5" pin="NC" pad="5"/>
-</connects>
-<technologies>
-<technology name="05"/>
-<technology name="06"/>
-<technology name="08"/>
-<technology name="12"/>
-<technology name="15"/>
-<technology name="18"/>
-<technology name="24"/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="testpad">
 <description>&lt;b&gt;Test Pins/Pads&lt;/b&gt;&lt;p&gt;
 Cream on SMD OFF.&lt;br&gt;
@@ -15021,7 +14932,6 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <part name="R8" library="rcl" deviceset="R-EU_" device="R0805" value="10kΩ"/>
 <part name="GND19" library="supply1" deviceset="GND" device=""/>
 <part name="VO" library="bourns" deviceset="3386-" device="G" value="10kΩ"/>
-<part name="5VREG" library="linear" deviceset="78L*SMD" device="" technology="05"/>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
 <part name="P+10" library="supply1" deviceset="+5V" device=""/>
 <part name="P+5" library="supply1" deviceset="+5V" device=""/>
@@ -15045,6 +14955,7 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <part name="GND22" library="supply1" deviceset="GND" device=""/>
 <part name="Q1" library="transistor-npn" deviceset="BC817*" device="SMD" technology="-25LT1"/>
 <part name="R9" library="rcl" deviceset="R-EU_" device="R0805" value="10kΩ"/>
+<part name="5VREG" library="v-reg" deviceset="LD117A?*" device="S" technology="50TR"/>
 </parts>
 <sheets>
 <sheet>
@@ -15053,7 +14964,6 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <text x="262.89" y="-5.08" size="1.778" layer="91" rot="R180">MTP3055</text>
 <text x="-7.62" y="-2.54" size="5.08" layer="91" rot="R90">Change this pot to
 the SMD one</text>
-<text x="-7.62" y="86.36" size="1.778" layer="91" rot="R90">Change the 5V regulator to a LD1117</text>
 </plain>
 <instances>
 <instance part="OP1" gate="A" x="214.63" y="-12.7"/>
@@ -15107,8 +15017,7 @@ the SMD one</text>
 <instance part="R8" gate="G$1" x="134.62" y="90.17"/>
 <instance part="GND19" gate="1" x="148.59" y="73.66"/>
 <instance part="VO" gate="G$1" x="10.16" y="35.56" rot="MR180"/>
-<instance part="5VREG" gate="G$1" x="15.24" y="121.92"/>
-<instance part="GND17" gate="1" x="16.51" y="93.98"/>
+<instance part="GND17" gate="1" x="16.51" y="101.6"/>
 <instance part="P+10" gate="1" x="35.56" y="133.35"/>
 <instance part="P+5" gate="1" x="38.1" y="60.96"/>
 <instance part="P+6" gate="1" x="66.04" y="60.96"/>
@@ -15131,6 +15040,7 @@ the SMD one</text>
 <instance part="GND22" gate="1" x="125.73" y="143.51"/>
 <instance part="Q1" gate="G$1" x="58.42" y="-11.43"/>
 <instance part="R9" gate="G$1" x="40.64" y="-11.43"/>
+<instance part="5VREG" gate="G$1" x="16.51" y="121.92"/>
 </instances>
 <busses>
 </busses>
@@ -15242,25 +15152,9 @@ the SMD one</text>
 <pinref part="GND19" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="5VREG" gate="G$1" pin="GND@1"/>
-<wire x1="12.7" y1="109.22" x2="12.7" y2="102.87" width="0.1524" layer="91"/>
-<pinref part="5VREG" gate="G$1" pin="GND@4"/>
-<wire x1="12.7" y1="102.87" x2="15.24" y2="102.87" width="0.1524" layer="91"/>
-<wire x1="15.24" y1="102.87" x2="16.51" y2="102.87" width="0.1524" layer="91"/>
-<wire x1="16.51" y1="102.87" x2="17.78" y2="102.87" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="102.87" x2="20.32" y2="102.87" width="0.1524" layer="91"/>
-<wire x1="20.32" y1="102.87" x2="20.32" y2="109.22" width="0.1524" layer="91"/>
-<pinref part="5VREG" gate="G$1" pin="GND@3"/>
-<wire x1="17.78" y1="109.22" x2="17.78" y2="102.87" width="0.1524" layer="91"/>
-<pinref part="5VREG" gate="G$1" pin="GND@2"/>
-<wire x1="15.24" y1="109.22" x2="15.24" y2="102.87" width="0.1524" layer="91"/>
-<junction x="15.24" y="102.87"/>
-<junction x="17.78" y="102.87"/>
-<junction x="12.7" y="102.87"/>
-<junction x="20.32" y="102.87"/>
-<wire x1="16.51" y1="102.87" x2="16.51" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="16.51" y1="114.3" x2="16.51" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="GND17" gate="1" pin="GND"/>
-<junction x="16.51" y="102.87"/>
+<pinref part="5VREG" gate="G$1" pin="ADJ"/>
 </segment>
 <segment>
 <pinref part="C9" gate="G$1" pin="1"/>
@@ -15430,9 +15324,9 @@ the SMD one</text>
 <junction x="10.16" y="172.72"/>
 <pinref part="PWR" gate="G$1" pin="2"/>
 <wire x1="-1.27" y1="172.72" x2="-1.27" y2="121.92" width="0.1524" layer="91"/>
-<pinref part="5VREG" gate="G$1" pin="VIN"/>
-<wire x1="-1.27" y1="121.92" x2="5.08" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="-1.27" y1="121.92" x2="8.89" y2="121.92" width="0.1524" layer="91"/>
 <junction x="-1.27" y="172.72"/>
+<pinref part="5VREG" gate="G$1" pin="IN"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -15661,14 +15555,14 @@ the SMD one</text>
 </net>
 <net name="+5V" class="0">
 <segment>
-<pinref part="5VREG" gate="G$1" pin="VOUT"/>
 <pinref part="P+10" gate="1" pin="+5V"/>
-<wire x1="27.94" y1="121.92" x2="35.56" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="24.13" y1="121.92" x2="35.56" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="35.56" y1="121.92" x2="35.56" y2="130.81" width="0.1524" layer="91"/>
 <pinref part="C9" gate="G$1" pin="2"/>
 <wire x1="35.56" y1="116.84" x2="35.56" y2="121.92" width="0.1524" layer="91"/>
 <junction x="35.56" y="121.92"/>
 <pinref part="5V" gate="G$1" pin="TP"/>
+<pinref part="5VREG" gate="G$1" pin="OUT"/>
 </segment>
 <segment>
 <wire x1="38.1" y1="5.08" x2="38.1" y2="50.8" width="0.1524" layer="91"/>
