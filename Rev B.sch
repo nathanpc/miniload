@@ -14372,10 +14372,8 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="C1" library="rcl" deviceset="C-EU" device="C0805" value="0.1uF"/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
-<part name="SHUNT" library="rcl" deviceset="R-EU_" device="VTA52" value="1Ω"/>
 <part name="N-CHANNEL" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCHANNEL" device="FQP30N06L"/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
-<part name="R2" library="rcl" deviceset="R-EU_" device="R0805" value="1kΩ"/>
 <part name="R3" library="rcl" deviceset="R-EU_" device="R0805" value="1kΩ"/>
 <part name="C2" library="rcl" deviceset="C-EU" device="C0805" value="10nF"/>
 <part name="HEATSINK" library="heatsink" deviceset="SK129-PAD" device=""/>
@@ -14394,7 +14392,7 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
 <part name="C4" library="rcl" deviceset="C-EU" device="C0805" value="0.1uF"/>
-<part name="C5" library="rcl" deviceset="C-EU" device="C0805" value="0.1uF"/>
+<part name="C5" library="rcl" deviceset="C-EU" device="C0805" value="1uF"/>
 <part name="R6" library="rcl" deviceset="R-EU_" device="R0805" value="100kΩ"/>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
 <part name="R7" library="resistor" deviceset="R-EU_" device="R0805" value="10kΩ"/>
@@ -14406,11 +14404,6 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <part name="GND8" library="supply1" deviceset="GND" device=""/>
 <part name="RE1" library="SparkFun-Electromechanical" deviceset="ROTARTY_ENCODER" device=""/>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
-<part name="OP2" library="Texas Instruments_By_element14_Batch_1" deviceset="TLV2372IP" device=""/>
-<part name="P+8" library="supply1" deviceset="VCC" device=""/>
-<part name="C6" library="rcl" deviceset="C-EU" device="C0805" value="0.1uF"/>
-<part name="GND15" library="supply1" deviceset="GND" device=""/>
-<part name="GND16" library="supply1" deviceset="GND" device=""/>
 <part name="GND18" library="supply1" deviceset="GND" device=""/>
 <part name="P+9" library="supply1" deviceset="VCC" device=""/>
 <part name="R8" library="rcl" deviceset="R-EU_" device="R0805" value="10kΩ"/>
@@ -14426,9 +14419,6 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <part name="3V3" library="testpad" deviceset="PTR1" device="TP10SQ"/>
 <part name="5V" library="testpad" deviceset="PTR1" device="TP10SQ"/>
 <part name="GND" library="testpad" deviceset="PTR1" device="TP10SQ"/>
-<part name="IV" library="testpad" deviceset="PTR1" device="TP10SQ"/>
-<part name="IVO" library="testpad" deviceset="PTR1" device="TP10SQ"/>
-<part name="SGND" library="testpad" deviceset="PTR1" device="TP10SQ"/>
 <part name="R1" library="rcl" deviceset="R-EU_" device="R0805" value="10kΩ"/>
 <part name="P+11" library="supply1" deviceset="VCC" device=""/>
 <part name="R5" library="rcl" deviceset="R-EU_" device="R0805" value="10kΩ"/>
@@ -14439,7 +14429,17 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <part name="Q1" library="transistor-npn" deviceset="BC817*" device="SMD" technology="-25LT1"/>
 <part name="R9" library="rcl" deviceset="R-EU_" device="R0805" value="10kΩ"/>
 <part name="5VREG" library="v-reg" deviceset="LD117A?*" device="S" technology="50TR"/>
-<part name="R10" library="SparkFun-Electromechanical" deviceset="TRIMPOT" device="-2"/>
+<part name="VO" library="SparkFun-Electromechanical" deviceset="TRIMPOT" device="-2"/>
+<part name="R2" library="rcl" deviceset="R-EU_" device="R2512" value="10Ω"/>
+<part name="R10" library="rcl" deviceset="R-EU_" device="R2512" value="10Ω"/>
+<part name="R11" library="rcl" deviceset="R-EU_" device="R2512" value="10Ω"/>
+<part name="R12" library="rcl" deviceset="R-EU_" device="R2512" value="10Ω"/>
+<part name="R13" library="rcl" deviceset="R-EU_" device="R2512" value="10Ω"/>
+<part name="R14" library="rcl" deviceset="R-EU_" device="R2512" value="10Ω"/>
+<part name="R15" library="rcl" deviceset="R-EU_" device="R2512" value="10Ω"/>
+<part name="R16" library="rcl" deviceset="R-EU_" device="R2512" value="10Ω"/>
+<part name="R17" library="rcl" deviceset="R-EU_" device="R2512" value="10Ω"/>
+<part name="R18" library="rcl" deviceset="R-EU_" device="R2512" value="10Ω"/>
 </parts>
 <sheets>
 <sheet>
@@ -14454,12 +14454,10 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <instance part="GND1" gate="1" x="191.77" y="-43.18"/>
 <instance part="C1" gate="G$1" x="179.07" y="0" rot="R90"/>
 <instance part="GND2" gate="1" x="168.91" y="-7.62"/>
-<instance part="SHUNT" gate="G$1" x="265.43" y="-30.48" rot="R90"/>
 <instance part="N-CHANNEL" gate="G$1" x="265.43" y="-10.16" smashed="yes">
 <attribute name="NAME" x="270.51" y="-17.78" size="1.778" layer="95" rot="R90"/>
 </instance>
-<instance part="GND3" gate="1" x="265.43" y="-43.18"/>
-<instance part="R2" gate="G$1" x="250.19" y="-20.32"/>
+<instance part="GND3" gate="1" x="265.43" y="-52.07"/>
 <instance part="R3" gate="G$1" x="245.11" y="-10.16"/>
 <instance part="C2" gate="G$1" x="237.49" y="-15.24"/>
 <instance part="HEATSINK" gate="G$1" x="275.59" y="-10.16" rot="R270"/>
@@ -14490,11 +14488,6 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <instance part="GND8" gate="1" x="10.16" y="15.24"/>
 <instance part="RE1" gate="G$1" x="132.08" y="66.04" rot="R270"/>
 <instance part="GND14" gate="1" x="132.08" y="40.64"/>
-<instance part="OP2" gate="A" x="341.63" y="-35.56"/>
-<instance part="P+8" gate="VCC" x="318.77" y="-15.24"/>
-<instance part="C6" gate="G$1" x="306.07" y="-22.86" rot="R90"/>
-<instance part="GND15" gate="1" x="295.91" y="-30.48"/>
-<instance part="GND16" gate="1" x="318.77" y="-68.58"/>
 <instance part="GND18" gate="1" x="43.18" y="152.4"/>
 <instance part="P+9" gate="VCC" x="142.24" y="106.68"/>
 <instance part="R8" gate="G$1" x="134.62" y="90.17"/>
@@ -14510,9 +14503,6 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <instance part="3V3" gate="G$1" x="50.8" y="172.72" rot="R90"/>
 <instance part="5V" gate="G$1" x="38.1" y="121.92" rot="R90"/>
 <instance part="GND" gate="G$1" x="-12.7" y="160.02" rot="R270"/>
-<instance part="IV" gate="G$1" x="267.97" y="-20.32" rot="R90"/>
-<instance part="IVO" gate="G$1" x="372.11" y="-58.42" rot="R90"/>
-<instance part="SGND" gate="G$1" x="267.97" y="-38.1" rot="R90"/>
 <instance part="R1" gate="G$1" x="161.29" y="66.04" rot="R90"/>
 <instance part="P+11" gate="VCC" x="161.29" y="85.09"/>
 <instance part="R5" gate="G$1" x="107.95" y="66.04" rot="R90"/>
@@ -14523,10 +14513,20 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <instance part="Q1" gate="G$1" x="58.42" y="-11.43"/>
 <instance part="R9" gate="G$1" x="40.64" y="-11.43"/>
 <instance part="5VREG" gate="G$1" x="16.51" y="121.92"/>
-<instance part="R10" gate="R?" x="10.16" y="35.56" smashed="yes" rot="R270">
+<instance part="VO" gate="R?" x="10.16" y="35.56" smashed="yes" rot="R270">
 <attribute name="NAME" x="6.35" y="38.1" size="1.778" layer="95" rot="R270"/>
 <attribute name="VALUE" x="11.43" y="36.068" size="1.778" layer="96"/>
 </instance>
+<instance part="R2" gate="G$1" x="265.43" y="-35.56" rot="R90"/>
+<instance part="R10" gate="G$1" x="273.05" y="-35.56" rot="R90"/>
+<instance part="R11" gate="G$1" x="280.67" y="-35.56" rot="R90"/>
+<instance part="R12" gate="G$1" x="288.29" y="-35.56" rot="R90"/>
+<instance part="R13" gate="G$1" x="295.91" y="-35.56" rot="R90"/>
+<instance part="R14" gate="G$1" x="303.53" y="-35.56" rot="R90"/>
+<instance part="R15" gate="G$1" x="311.15" y="-35.56" rot="R90"/>
+<instance part="R16" gate="G$1" x="318.77" y="-35.56" rot="R90"/>
+<instance part="R17" gate="G$1" x="326.39" y="-35.56" rot="R90"/>
+<instance part="R18" gate="G$1" x="334.01" y="-35.56" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -14543,14 +14543,6 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <wire x1="176.53" y1="0" x2="168.91" y2="0" width="0.1524" layer="91"/>
 <wire x1="168.91" y1="0" x2="168.91" y2="-5.08" width="0.1524" layer="91"/>
 <pinref part="GND2" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="SHUNT" gate="G$1" pin="1"/>
-<wire x1="265.43" y1="-35.56" x2="265.43" y2="-38.1" width="0.1524" layer="91"/>
-<pinref part="GND3" gate="1" pin="GND"/>
-<pinref part="SGND" gate="G$1" pin="TP"/>
-<wire x1="265.43" y1="-38.1" x2="265.43" y2="-40.64" width="0.1524" layer="91"/>
-<junction x="265.43" y="-38.1"/>
 </segment>
 <segment>
 <pinref part="PWR" gate="G$1" pin="1"/>
@@ -14606,24 +14598,12 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <segment>
 <wire x1="10.16" y1="30.48" x2="10.16" y2="17.78" width="0.1524" layer="91"/>
 <pinref part="GND8" gate="1" pin="GND"/>
-<pinref part="R10" gate="R?" pin="CW"/>
+<pinref part="VO" gate="R?" pin="CW"/>
 </segment>
 <segment>
 <pinref part="RE1" gate="G$1" pin="C"/>
 <wire x1="132.08" y1="55.88" x2="132.08" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="GND14" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="C6" gate="G$1" pin="1"/>
-<wire x1="303.53" y1="-22.86" x2="295.91" y2="-22.86" width="0.1524" layer="91"/>
-<wire x1="295.91" y1="-22.86" x2="295.91" y2="-27.94" width="0.1524" layer="91"/>
-<pinref part="GND15" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="OP2" gate="A" pin="GND"/>
-<wire x1="323.85" y1="-48.26" x2="318.77" y2="-48.26" width="0.1524" layer="91"/>
-<wire x1="318.77" y1="-48.26" x2="318.77" y2="-66.04" width="0.1524" layer="91"/>
-<pinref part="GND16" gate="1" pin="GND"/>
 </segment>
 <segment>
 <wire x1="43.18" y1="160.02" x2="43.18" y2="154.94" width="0.1524" layer="91"/>
@@ -14663,6 +14643,48 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <pinref part="GND12" gate="1" pin="GND"/>
 <wire x1="60.96" y1="-16.51" x2="60.96" y2="-24.13" width="0.1524" layer="91"/>
 <pinref part="Q1" gate="G$1" pin="E"/>
+</segment>
+<segment>
+<pinref part="R2" gate="G$1" pin="1"/>
+<wire x1="265.43" y1="-40.64" x2="265.43" y2="-45.72" width="0.1524" layer="91"/>
+<pinref part="R18" gate="G$1" pin="1"/>
+<wire x1="265.43" y1="-45.72" x2="273.05" y2="-45.72" width="0.1524" layer="91"/>
+<wire x1="273.05" y1="-45.72" x2="280.67" y2="-45.72" width="0.1524" layer="91"/>
+<wire x1="280.67" y1="-45.72" x2="288.29" y2="-45.72" width="0.1524" layer="91"/>
+<wire x1="288.29" y1="-45.72" x2="295.91" y2="-45.72" width="0.1524" layer="91"/>
+<wire x1="295.91" y1="-45.72" x2="303.53" y2="-45.72" width="0.1524" layer="91"/>
+<wire x1="303.53" y1="-45.72" x2="311.15" y2="-45.72" width="0.1524" layer="91"/>
+<wire x1="311.15" y1="-45.72" x2="318.77" y2="-45.72" width="0.1524" layer="91"/>
+<wire x1="318.77" y1="-45.72" x2="326.39" y2="-45.72" width="0.1524" layer="91"/>
+<wire x1="326.39" y1="-45.72" x2="334.01" y2="-45.72" width="0.1524" layer="91"/>
+<wire x1="334.01" y1="-45.72" x2="334.01" y2="-40.64" width="0.1524" layer="91"/>
+<pinref part="R17" gate="G$1" pin="1"/>
+<wire x1="326.39" y1="-40.64" x2="326.39" y2="-45.72" width="0.1524" layer="91"/>
+<pinref part="R16" gate="G$1" pin="1"/>
+<wire x1="318.77" y1="-40.64" x2="318.77" y2="-45.72" width="0.1524" layer="91"/>
+<pinref part="R15" gate="G$1" pin="1"/>
+<wire x1="311.15" y1="-40.64" x2="311.15" y2="-45.72" width="0.1524" layer="91"/>
+<pinref part="R14" gate="G$1" pin="1"/>
+<wire x1="303.53" y1="-40.64" x2="303.53" y2="-45.72" width="0.1524" layer="91"/>
+<pinref part="R13" gate="G$1" pin="1"/>
+<wire x1="295.91" y1="-40.64" x2="295.91" y2="-45.72" width="0.1524" layer="91"/>
+<pinref part="R12" gate="G$1" pin="1"/>
+<wire x1="288.29" y1="-40.64" x2="288.29" y2="-45.72" width="0.1524" layer="91"/>
+<pinref part="R11" gate="G$1" pin="1"/>
+<wire x1="280.67" y1="-40.64" x2="280.67" y2="-45.72" width="0.1524" layer="91"/>
+<pinref part="R10" gate="G$1" pin="1"/>
+<wire x1="273.05" y1="-40.64" x2="273.05" y2="-45.72" width="0.1524" layer="91"/>
+<junction x="326.39" y="-45.72"/>
+<junction x="318.77" y="-45.72"/>
+<junction x="311.15" y="-45.72"/>
+<junction x="303.53" y="-45.72"/>
+<junction x="295.91" y="-45.72"/>
+<junction x="288.29" y="-45.72"/>
+<junction x="280.67" y="-45.72"/>
+<junction x="273.05" y="-45.72"/>
+<wire x1="265.43" y1="-45.72" x2="265.43" y2="-49.53" width="0.1524" layer="91"/>
+<pinref part="GND3" gate="1" pin="GND"/>
+<junction x="265.43" y="-45.72"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -14709,16 +14731,6 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <pinref part="P+7" gate="VCC" pin="VCC"/>
 </segment>
 <segment>
-<pinref part="P+8" gate="VCC" pin="VCC"/>
-<pinref part="C6" gate="G$1" pin="2"/>
-<wire x1="318.77" y1="-22.86" x2="318.77" y2="-17.78" width="0.1524" layer="91"/>
-<wire x1="311.15" y1="-22.86" x2="318.77" y2="-22.86" width="0.1524" layer="91"/>
-<pinref part="OP2" gate="A" pin="VDD"/>
-<wire x1="323.85" y1="-30.48" x2="318.77" y2="-30.48" width="0.1524" layer="91"/>
-<wire x1="318.77" y1="-30.48" x2="318.77" y2="-22.86" width="0.1524" layer="91"/>
-<junction x="318.77" y="-22.86"/>
-</segment>
-<segment>
 <pinref part="P+9" gate="VCC" pin="VCC"/>
 <wire x1="142.24" y1="90.17" x2="142.24" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="R8" gate="G$1" pin="2"/>
@@ -14741,26 +14753,6 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <pinref part="PWR_IN" gate="G$1" pin="2"/>
 <wire x1="271.78" y1="20.32" x2="265.43" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="265.43" y1="20.32" x2="265.43" y2="-5.08" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$1" class="0">
-<segment>
-<pinref part="OP2" gate="A" pin="1IN_+"/>
-<wire x1="278.13" y1="-35.56" x2="323.85" y2="-35.56" width="0.1524" layer="91"/>
-<wire x1="278.13" y1="-35.56" x2="278.13" y2="-60.96" width="0.1524" layer="91"/>
-<wire x1="278.13" y1="-60.96" x2="234.95" y2="-60.96" width="0.1524" layer="91"/>
-<wire x1="234.95" y1="-20.32" x2="234.95" y2="-38.1" width="0.1524" layer="91"/>
-<wire x1="234.95" y1="-38.1" x2="186.69" y2="-38.1" width="0.1524" layer="91"/>
-<wire x1="186.69" y1="-38.1" x2="186.69" y2="-20.32" width="0.1524" layer="91"/>
-<pinref part="OP1" gate="A" pin="2IN-"/>
-<wire x1="186.69" y1="-20.32" x2="196.85" y2="-20.32" width="0.1524" layer="91"/>
-<pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="234.95" y1="-20.32" x2="237.49" y2="-20.32" width="0.1524" layer="91"/>
-<pinref part="C2" gate="G$1" pin="2"/>
-<wire x1="237.49" y1="-20.32" x2="245.11" y2="-20.32" width="0.1524" layer="91"/>
-<junction x="237.49" y="-20.32"/>
-<junction x="234.95" y="-38.1"/>
-<wire x1="234.95" y1="-60.96" x2="234.95" y2="-38.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -14865,7 +14857,7 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <segment>
 <pinref part="LCD" gate="G$1" pin="VO"/>
 <wire x1="71.12" y1="35.56" x2="15.24" y2="35.56" width="0.1524" layer="91"/>
-<pinref part="R10" gate="R?" pin="WIPER"/>
+<pinref part="VO" gate="R?" pin="WIPER"/>
 </segment>
 </net>
 <net name="RS" class="0">
@@ -14952,35 +14944,63 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 </net>
 <net name="CURR_SENSE" class="0">
 <segment>
-<pinref part="OP2" gate="A" pin="1OUT"/>
-<wire x1="359.41" y1="-30.48" x2="369.57" y2="-30.48" width="0.1524" layer="91"/>
-<label x="382.27" y="-27.94" size="1.778" layer="95" rot="R180"/>
-<pinref part="OP2" gate="A" pin="1IN-"/>
-<wire x1="369.57" y1="-30.48" x2="379.73" y2="-30.48" width="0.1524" layer="91"/>
-<wire x1="323.85" y1="-38.1" x2="314.96" y2="-38.1" width="0.1524" layer="91"/>
-<wire x1="314.96" y1="-38.1" x2="314.96" y2="-58.42" width="0.1524" layer="91"/>
-<wire x1="314.96" y1="-58.42" x2="369.57" y2="-58.42" width="0.1524" layer="91"/>
-<wire x1="369.57" y1="-58.42" x2="369.57" y2="-30.48" width="0.1524" layer="91"/>
-<junction x="369.57" y="-30.48"/>
-<pinref part="IVO" gate="G$1" pin="TP"/>
-<junction x="369.57" y="-58.42"/>
-</segment>
-<segment>
 <pinref part="MCU" gate="G$1" pin="14"/>
 <wire x1="246.38" y1="149.86" x2="261.62" y2="149.86" width="0.1524" layer="91"/>
 <label x="279.4" y="151.13" size="1.778" layer="95" rot="R180"/>
 </segment>
-</net>
-<net name="N$13" class="0">
 <segment>
+<wire x1="234.95" y1="-20.32" x2="234.95" y2="-38.1" width="0.1524" layer="91"/>
+<wire x1="234.95" y1="-38.1" x2="186.69" y2="-38.1" width="0.1524" layer="91"/>
+<wire x1="186.69" y1="-38.1" x2="186.69" y2="-20.32" width="0.1524" layer="91"/>
+<pinref part="OP1" gate="A" pin="2IN-"/>
+<wire x1="186.69" y1="-20.32" x2="196.85" y2="-20.32" width="0.1524" layer="91"/>
+<wire x1="234.95" y1="-20.32" x2="237.49" y2="-20.32" width="0.1524" layer="91"/>
+<pinref part="C2" gate="G$1" pin="2"/>
+<junction x="237.49" y="-20.32"/>
 <pinref part="N-CHANNEL" gate="G$1" pin="S"/>
-<pinref part="SHUNT" gate="G$1" pin="2"/>
 <wire x1="265.43" y1="-25.4" x2="265.43" y2="-20.32" width="0.1524" layer="91"/>
 <junction x="265.43" y="-20.32"/>
 <wire x1="265.43" y1="-20.32" x2="265.43" y2="-15.24" width="0.1524" layer="91"/>
+<wire x1="237.49" y1="-20.32" x2="265.43" y2="-20.32" width="0.1524" layer="91"/>
+<label x="236.22" y="-27.94" size="1.778" layer="95" rot="R270"/>
 <pinref part="R2" gate="G$1" pin="2"/>
-<wire x1="255.27" y1="-20.32" x2="265.43" y2="-20.32" width="0.1524" layer="91"/>
-<pinref part="IV" gate="G$1" pin="TP"/>
+<wire x1="265.43" y1="-30.48" x2="265.43" y2="-25.4" width="0.1524" layer="91"/>
+<pinref part="R18" gate="G$1" pin="2"/>
+<wire x1="265.43" y1="-25.4" x2="273.05" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="273.05" y1="-25.4" x2="280.67" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="280.67" y1="-25.4" x2="288.29" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="288.29" y1="-25.4" x2="295.91" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="295.91" y1="-25.4" x2="303.53" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="303.53" y1="-25.4" x2="311.15" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="311.15" y1="-25.4" x2="318.77" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="318.77" y1="-25.4" x2="326.39" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="326.39" y1="-25.4" x2="334.01" y2="-25.4" width="0.1524" layer="91"/>
+<wire x1="334.01" y1="-25.4" x2="334.01" y2="-30.48" width="0.1524" layer="91"/>
+<pinref part="R17" gate="G$1" pin="2"/>
+<wire x1="326.39" y1="-30.48" x2="326.39" y2="-25.4" width="0.1524" layer="91"/>
+<pinref part="R16" gate="G$1" pin="2"/>
+<wire x1="318.77" y1="-30.48" x2="318.77" y2="-25.4" width="0.1524" layer="91"/>
+<pinref part="R15" gate="G$1" pin="2"/>
+<wire x1="311.15" y1="-30.48" x2="311.15" y2="-25.4" width="0.1524" layer="91"/>
+<pinref part="R14" gate="G$1" pin="2"/>
+<wire x1="303.53" y1="-30.48" x2="303.53" y2="-25.4" width="0.1524" layer="91"/>
+<pinref part="R13" gate="G$1" pin="2"/>
+<wire x1="295.91" y1="-30.48" x2="295.91" y2="-25.4" width="0.1524" layer="91"/>
+<pinref part="R12" gate="G$1" pin="2"/>
+<wire x1="288.29" y1="-30.48" x2="288.29" y2="-25.4" width="0.1524" layer="91"/>
+<pinref part="R11" gate="G$1" pin="2"/>
+<wire x1="280.67" y1="-30.48" x2="280.67" y2="-25.4" width="0.1524" layer="91"/>
+<pinref part="R10" gate="G$1" pin="2"/>
+<wire x1="273.05" y1="-30.48" x2="273.05" y2="-25.4" width="0.1524" layer="91"/>
+<junction x="273.05" y="-25.4"/>
+<junction x="280.67" y="-25.4"/>
+<junction x="288.29" y="-25.4"/>
+<junction x="295.91" y="-25.4"/>
+<junction x="303.53" y="-25.4"/>
+<junction x="311.15" y="-25.4"/>
+<junction x="318.77" y="-25.4"/>
+<junction x="326.39" y="-25.4"/>
+<junction x="265.43" y="-25.4"/>
 </segment>
 </net>
 <net name="RE_BTN" class="0">
@@ -15059,7 +15079,7 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <pinref part="P+5" gate="1" pin="+5V"/>
 <pinref part="LCD" gate="G$1" pin="A"/>
 <wire x1="71.12" y1="5.08" x2="38.1" y2="5.08" width="0.1524" layer="91"/>
-<pinref part="R10" gate="R?" pin="CCW"/>
+<pinref part="VO" gate="R?" pin="CCW"/>
 </segment>
 <segment>
 <pinref part="LCD" gate="G$1" pin="VDD"/>
@@ -15116,19 +15136,15 @@ These are standard SMD and PTH capacitors. Normally 10uF, 47uF, and 100uF in ele
 <approved hash="101,1,273.05,-5.08,HEATSINK,K,,,,"/>
 <approved hash="101,1,273.05,-15.24,HEATSINK,K,,,,"/>
 <approved hash="104,1,196.85,-7.62,OP1,VDD,VCC,,,"/>
-<approved hash="104,1,71.12,5.08,LCD,A,N$11,,,"/>
-<approved hash="104,1,71.12,2.54,LCD,K,GND,,,"/>
+<approved hash="104,1,71.12,5.08,LCD,A,+5V,,,"/>
+<approved hash="104,1,71.12,2.54,LCD,K,N$9,,,"/>
 <approved hash="104,1,71.12,38.1,LCD,VDD,+5V,,,"/>
 <approved hash="104,1,71.12,40.64,LCD,VSS,GND,,,"/>
 <approved hash="104,1,323.85,-30.48,OP2,VDD,VCC,,,"/>
 <approved hash="202,1,323.85,-40.64,OP2,2IN+,,,,"/>
 <approved hash="202,1,323.85,-43.18,OP2,2IN-,,,,"/>
-<approved hash="208,1,27.94,121.92,+5V,out,,,,"/>
-<approved hash="208,1,35.56,130.81,+5V,sup,,,,"/>
-<approved hash="208,1,38.1,58.42,+5V,sup,,,,"/>
-<approved hash="208,1,66.04,58.42,+5V,sup,,,,"/>
 <approved hash="115,1,76.5217,168.91,ON,,,,,"/>
-<approved hash="115,1,26.6277,7.75123,JP_BKL,,,,,"/>
+<approved hash="115,1,136.322,160.151,PRGHDR,,,,,"/>
 </errors>
 </schematic>
 </drawing>
