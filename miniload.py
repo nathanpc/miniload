@@ -130,7 +130,7 @@ if __name__ == "__main__":
             current = int(line[1])
         elif command == "rs":
             # Ratio set.
-            ratio = float(line[1]) * 100
+            ratio = float(line[1]) * 1000
             print fetch(conn, "RATSET " + str(ratio))
         elif command == "cs":
             # Set the cutoff voltage.

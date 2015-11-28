@@ -18,6 +18,7 @@ const int usb_sense = A5;
 const int ma_range = 12;
 const int a_range = 11;
 const int pwm_pin = 9;
+const int led = 13;
 
 float ratio = 1;
 float cutoff = 0;
@@ -27,6 +28,7 @@ void setup() {
 
   pinMode(ma_range, OUTPUT);
   pinMode(a_range, OUTPUT);
+  pinMode(led, OUTPUT);
 
   Timer1.initialize(100);
   set_current(0, OFF_RANGE);
@@ -45,18 +47,22 @@ void loop() {
     command = data.substring(0, data.indexOf(' '));
 
     if (command == "SENSEV") {
+      digitalWrite(led, HIGH);
       Serial.println(sense_voltage(), 3);
+      digitalWrite(led, LOW);
     } else if (command == "USBV") {
+      digitalWrite(led, HIGH);
       Serial.println(usb_voltage(), 3);
+      digitalWrite(led, LOW);
     } else if (command == "ISET") {
       value = (data.substring(data.indexOf(' ') + 1)).toInt();
       set_current(value, MA_RANGE);
     } else if (command == "RATSET") {
       value = (data.substring(data.indexOf(' ') + 1)).toInt();
-      ratio = value / 100.0;
+      ratio = value / 1000.0;
 
       Serial.print("OK. Ratio set: ");
-      Serial.println(ratio, 2);
+      Serial.println(ratio, 3);
     } else if (command == "COSET") {
       value = (data.substring(data.indexOf(' ') + 1)).toInt();
       cutoff = value / 1000.0;
