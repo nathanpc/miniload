@@ -4,6 +4,7 @@ import sys
 import time
 import serial
 import threading
+import readline
 
 class SerialConnection:
     def __init__(self, port = None):
@@ -26,7 +27,7 @@ class SerialConnection:
 
     def send(self, command):
         """ Send a command to the device """
-        self.ser.write(command + "\r\n")
+        self.ser.write(command)
 
     def read(self, bytes = None):
         """ Reads a line for the serial port if `bytes` is not specified """
@@ -61,11 +62,17 @@ class Logging(threading.Thread):
 		""" Stops logging. """
 		self.stopped.set()
 
-def grab_sample(dmm, csv, count):
-    tmp_data = [ count[0], time.strftime("%c"),
-            dmm.fetch(True, False), dmm.fetch(False, False) ]
+def fetch(conn, value):
+    conn.send(value + "\n")
+    reading = conn.read()
 
-    line = str(tmp_data[0]) + "," + tmp_data[1] + "," + tmp_data[2][:-1] + "," + tmp_data[3][:-1] + ",\n"
+    return reading
+
+def grab_sample(conn, csv, count):
+    tmp_data = [ count[0], time.strftime("%c"),
+            fetch(conn, "SENSEV"), fetch(conn, "USBV") ]
+
+    line = str(tmp_data[0]) + "," + tmp_data[1] + "," + tmp_data[2] + "," + tmp_data[3] + ",\n"
     csv.write(line.encode('ascii', 'ignore').decode('ascii'))
 
     print("Reading %d:" % tmp_data[0])
@@ -75,24 +82,63 @@ def grab_sample(dmm, csv, count):
 
     count[0] += 1
 
-# Main program.
-if __name__ == "__main__":
-    port = sys.argv[1]
-    conn = DMM.SerialConnection(port)
-    dmm  = DMM.Agilent.DMM(conn)
-
-    # Prints the identification stuff.
-    idn = dmm.identify()
-    print "Connected to", idn["oem"], idn["model"]
-
+def start_log(conn):
     count = [ 0 ]
-    csv = open(time.strftime("%c") + ".log", "w")
-
-    thread = DMM.Logging(1, lambda: grab_sample(dmm, csv, count))
+    filename = time.strftime("%c") + ".log"
+    csv = open(filename, "w")
+    print "Logging data to " + filename
+    
+    thread = Logging(5, lambda: grab_sample(conn, csv, count))
     thread.start()
-    raw_input("Press Enter to continue...\n")
+    raw_input("Press Enter to stop the logging process.\n")
     thread.stop()
 
     csv.close()
+
+# Main program.
+if __name__ == "__main__":
+    port = sys.argv[1]
+    conn = SerialConnection(port)
+
+    print "Connecting to miniLoad in " + port + "..."
+    time.sleep(3)  # Arduino hates when you send data right after open...
+
+    while True:
+        rinput = raw_input("> ")
+        line = rinput.split(' ')
+        command = line[0]
+
+        if command == "raw":
+            # Send raw data.
+            print fetch(conn, rinput[4:])
+        elif command == "sv":
+            # Sense voltage.
+            print fetch(conn, "SENSEV") + "V"
+        elif command == "uv":
+            # USB voltage.
+            print fetch(conn, "USBV") + "V"
+        elif command == "is":
+            # Sets the current.
+            print fetch(conn, "ISET " + line[1])
+        elif command == "rs":
+            # Ratio set.
+            ratio = float(line[1]) * 100
+            print fetch(conn, "RATSET " + str(ratio))
+        elif command == "start":
+            # Start logging.
+            start_log(conn)
+        elif command == "help":
+            print "raw <command> - Sends raw data"
+            print "sv - Fetches a voltage reading"
+            print "uv - Fetches the USB voltage"
+            print "is <current> - Sets the current in mA"
+            print "rs <ratio> - Sets the ratio"
+            print "start - Starts the logging process"
+            print "help - This"
+            print "q - Quits the program"
+        elif command == "q":
+            # Quits the program.
+            break
+
     conn.close()
 
