@@ -78,7 +78,8 @@ void loop() {
       Serial.print(cutoff, 3);
       Serial.println("V");
     } else {
-      Serial.println("FAIL. Invalid command.");
+      Serial.print("FAIL. Invalid command: ");
+      Serial.println(data);
     }
   }
 
