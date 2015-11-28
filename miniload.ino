@@ -6,7 +6,6 @@
  */
 
 #include <TimerOne.h>
-//#include <SimpleTimer.h>
 
 #define VREF 2.929
 #define BDIV 5.58526
@@ -22,7 +21,6 @@ const int pwm_pin = 9;
 
 float ratio = 1;
 float cutoff = 0;
-//SimpleTimer timer;
 
 void setup() {
   analogReference(EXTERNAL);
@@ -35,8 +33,6 @@ void setup() {
 
   Serial.begin(9600);
   Serial.setTimeout(20);
-
-  //ratio = 1.9;
 }
 
 void loop() {
@@ -52,15 +48,6 @@ void loop() {
       Serial.println(sense_voltage(), 3);
     } else if (command == "USBV") {
       Serial.println(usb_voltage(), 3);
-    /*} else if (command == "LOG") {
-      value = (data.substring(data.indexOf(' ') + 1)).toInt();
-      timer.setInterval(value * 1000, log_data);
-
-      Serial.print("OK. Logging started with a ");
-      Serial.print(value);
-      Serial.println("s interval.");
-
-      timer.run();*/
     } else if (command == "ISET") {
       value = (data.substring(data.indexOf(' ') + 1)).toInt();
       set_current(value, MA_RANGE);
@@ -82,9 +69,6 @@ void loop() {
       Serial.println(data);
     }
   }
-
-  //Serial.println(sense_voltage(), 3);
-  //delayMicroseconds(1000);
 }
 
 float sense_voltage() {
