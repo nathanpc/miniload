@@ -37,30 +37,32 @@ class SerialConnection:
         return self.ser.readline().replace("\r\n", "")
 
 class Logging(threading.Thread):
-	def __init__(self, interval, log_function):
-		"""Initializes the `Logging` class.
+    def __init__(self, interval, log_function):
+        """Initializes the `Logging` class.
 
-		Note:
-			Do not include the `self` parameter in the ``Args`` section.
+            Note:
+                Do not include the `self` parameter in the ``Args`` section.
 
-		Args:
-			interval (int): Interval in seconds between each sample.
-			log_function (function): A function that will be called every time the timer decides it is time to take a sample. You should use this function to log.
-		"""
-		threading.Thread.__init__(self)
+            Args:
+                interval (int): Interval in seconds between each sample.
+                log_function (function): A function that will be called every time the timer decides it is time to take a sample. You should use this function to log.
+        """
+        threading.Thread.__init__(self)
 
-		self.stopped = threading.Event()
-		self.interval = interval
-		self.log_function = log_function
+        self.stopped = threading.Event()
+        self.interval = interval
+        self.log_function = log_function
 
-	def run(self):
-		""" What to do while logging. """
-		while not self.stopped.wait(self.interval):
-			self.log_function()
+    def run(self):
+        """ What to do while logging. """
+        while not self.stopped.wait(self.interval):
+            if self.log_function():
+                print "Logging finished. Cutoff voltage reached."
+                self.stop()
 
-	def stop(self):
-		""" Stops logging. """
-		self.stopped.set()
+    def stop(self):
+        """ Stops logging. """
+        self.stopped.set()
 
 def fetch(conn, value):
     conn.send(value + "\n")
@@ -68,27 +70,34 @@ def fetch(conn, value):
 
     return reading
 
-def grab_sample(conn, csv, count):
+def grab_sample(conn, csv, count, cutoff):
     tmp_data = [ count[0], time.strftime("%c"),
             fetch(conn, "SENSEV"), fetch(conn, "USBV") ]
 
     line = str(tmp_data[0]) + "," + tmp_data[1] + "," + tmp_data[2] + "," + tmp_data[3] + ",\n"
     csv.write(line.encode('ascii', 'ignore').decode('ascii'))
 
+    # TODO: Make prettier and display the current mAh.
     print("Reading %d:" % tmp_data[0])
     print tmp_data[2]
     print tmp_data[3]
     print "-----------"
 
-    count[0] += 1
+    if (float(tmp_data[2]) < cutoff):
+        print fetch(conn, "ISET 0")
+        return True
 
-def start_log(conn):
+    count[0] += 1
+    return False
+
+def start_log(conn, cutoff):
     count = [ 0 ]
     filename = time.strftime("%c") + ".log"
     csv = open(filename, "w")
     print "Logging data to " + filename
+    print "The cutoff voltage is set to %.3fV" % cutoff
     
-    thread = Logging(5, lambda: grab_sample(conn, csv, count))
+    thread = Logging(5, lambda: grab_sample(conn, csv, count, cutoff))
     thread.start()
     raw_input("Press Enter to stop the logging process.\n")
     thread.stop()
@@ -99,6 +108,7 @@ def start_log(conn):
 if __name__ == "__main__":
     port = sys.argv[1]
     conn = SerialConnection(port)
+    cutoff = 0.0
 
     print "Connecting to miniLoad in " + port + "..."
     time.sleep(3)  # Arduino hates when you send data right after open...
@@ -124,21 +134,28 @@ if __name__ == "__main__":
             # Ratio set.
             ratio = float(line[1]) * 100
             print fetch(conn, "RATSET " + str(ratio))
+        elif command == "cs":
+            # Set the cutoff voltage.
+            cutoff = float(line[1])
+            print "Cutoff set to %.3fV" % cutoff
         elif command == "start":
             # Start logging.
-            start_log(conn)
+            start_log(conn, cutoff)
         elif command == "help":
             print "raw <command> - Sends raw data"
             print "sv - Fetches a voltage reading"
             print "uv - Fetches the USB voltage"
             print "is <current> - Sets the current in mA"
             print "rs <ratio> - Sets the ratio"
+            print "cs <voltage> - Set the cutoff voltage"
             print "start - Starts the logging process"
             print "help - This"
             print "q - Quits the program"
         elif command == "q":
             # Quits the program.
             break
+        else:
+            print "Invalid command."
 
     conn.close()
 
