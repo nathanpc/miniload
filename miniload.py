@@ -70,18 +70,14 @@ def fetch(conn, value):
 
     return reading
 
-def grab_sample(conn, csv, count, cutoff):
+def grab_sample(conn, csv, count, current, cutoff, interval):
     tmp_data = [ count[0], time.strftime("%c"),
             fetch(conn, "SENSEV"), fetch(conn, "USBV") ]
 
     line = str(tmp_data[0]) + "," + tmp_data[1] + "," + tmp_data[2] + "," + tmp_data[3] + ",\n"
     csv.write(line.encode('ascii', 'ignore').decode('ascii'))
 
-    # TODO: Make prettier and display the current mAh.
-    print("Reading %d:" % tmp_data[0])
-    print tmp_data[2]
-    print tmp_data[3]
-    print "-----------"
+    print "Reading %d (%.1fmAh): Battery %sV - USB %sV" % (tmp_data[0], (current * (tmp_data[0] * interval) / 3600), tmp_data[2], tmp_data[3])
 
     if (float(tmp_data[2]) < cutoff):
         print fetch(conn, "ISET 0")
@@ -90,14 +86,14 @@ def grab_sample(conn, csv, count, cutoff):
     count[0] += 1
     return False
 
-def start_log(conn, cutoff):
+def start_log(conn, current, cutoff):
     count = [ 0 ]
     filename = time.strftime("%c") + ".log"
     csv = open(filename, "w")
     print "Logging data to " + filename
     print "The cutoff voltage is set to %.3fV" % cutoff
     
-    thread = Logging(5, lambda: grab_sample(conn, csv, count, cutoff))
+    thread = Logging(5, lambda: grab_sample(conn, csv, count, current, cutoff, 5))
     thread.start()
     raw_input("Press Enter to stop the logging process.\n")
     thread.stop()
@@ -109,6 +105,7 @@ if __name__ == "__main__":
     port = sys.argv[1]
     conn = SerialConnection(port)
     cutoff = 0.0
+    current = 0.0
 
     print "Connecting to miniLoad in " + port + "..."
     time.sleep(3)  # Arduino hates when you send data right after open...
@@ -130,6 +127,7 @@ if __name__ == "__main__":
         elif command == "is":
             # Sets the current.
             print fetch(conn, "ISET " + line[1])
+            current = int(line[1])
         elif command == "rs":
             # Ratio set.
             ratio = float(line[1]) * 100
@@ -140,7 +138,7 @@ if __name__ == "__main__":
             print "Cutoff set to %.3fV" % cutoff
         elif command == "start":
             # Start logging.
-            start_log(conn, cutoff)
+            start_log(conn, current, cutoff)
         elif command == "help":
             print "raw <command> - Sends raw data"
             print "sv - Fetches a voltage reading"
