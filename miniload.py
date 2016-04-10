@@ -6,6 +6,9 @@ import serial
 import threading
 import readline
 
+cutoff = 0.0
+current = 0.0
+
 class SerialConnection:
     def __init__(self, port = None):
         self.ser = None
@@ -87,12 +90,16 @@ def grab_sample(conn, csv, count, current, cutoff, interval):
     return False
 
 def start_log(conn, current, cutoff):
-    count = [ 0 ]
+    count = [ 1 ]
     filename = time.strftime("%c") + ".log"
     csv = open(filename, "w")
     print "Logging data to " + filename
     print "The cutoff voltage is set to %.3fV" % cutoff
-    
+
+    print "Grabbing the open-circuit sample"
+    grab_sample(conn, csv, count, current, cutoff, 5)
+    set_current(current)
+
     thread = Logging(5, lambda: grab_sample(conn, csv, count, current, cutoff, 5))
     thread.start()
     raw_input("Press Enter to stop the logging process.\n")
@@ -100,12 +107,14 @@ def start_log(conn, current, cutoff):
 
     csv.close()
 
+def set_current(i):
+    print fetch(conn, "ISET " + i)
+    current = int(i)
+
 # Main program.
 if __name__ == "__main__":
     port = sys.argv[1]
     conn = SerialConnection(port)
-    cutoff = 0.0
-    current = 0.0
 
     print "Connecting to miniLoad in " + port + "..."
     time.sleep(3)  # Arduino hates when you send data right after open...
@@ -126,8 +135,7 @@ if __name__ == "__main__":
             print fetch(conn, "USBV") + "V"
         elif command == "is":
             # Sets the current.
-            print fetch(conn, "ISET " + line[1])
-            current = int(line[1])
+            set_current(line[1])
         elif command == "rs":
             # Ratio set.
             ratio = float(line[1]) * 1000
@@ -138,7 +146,7 @@ if __name__ == "__main__":
             print "Cutoff set to %.3fV" % cutoff
         elif command == "start":
             # Start logging.
-            start_log(conn, current, cutoff)
+            start_log(conn, line[1], cutoff)
         elif command == "help":
             print "raw <command> - Sends raw data"
             print "sv - Fetches a voltage reading"
@@ -146,7 +154,7 @@ if __name__ == "__main__":
             print "is <current> - Sets the current in mA"
             print "rs <ratio> - Sets the ratio"
             print "cs <voltage> - Set the cutoff voltage"
-            print "start - Starts the logging process"
+            print "start <current> - Starts the logging process"
             print "help - This"
             print "q - Quits the program"
         elif command == "q":
