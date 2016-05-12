@@ -89,7 +89,8 @@ def grab_sample(conn, csv, count, current, cutoff, interval):
     count[0] += 1
     return False
 
-def start_log(conn, current, cutoff):
+def start_log(conn, _current, cutoff):
+    global current
     count = [ 1 ]
     filename = time.strftime("%c") + ".log"
     csv = open(filename, "w")
@@ -98,7 +99,7 @@ def start_log(conn, current, cutoff):
 
     print "Grabbing the open-circuit sample"
     grab_sample(conn, csv, count, current, cutoff, 5)
-    set_current(current)
+    set_current(_current)
 
     thread = Logging(5, lambda: grab_sample(conn, csv, count, current, cutoff, 5))
     thread.start()
@@ -108,6 +109,7 @@ def start_log(conn, current, cutoff):
     csv.close()
 
 def set_current(i):
+    global current
     print fetch(conn, "ISET " + i)
     current = int(i)
 
